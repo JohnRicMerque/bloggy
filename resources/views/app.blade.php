@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>React</title>
 </head>
+@vite('resources/css/app.css')
 <body>
     <div id="root"></div>
     @viteReactRefresh
