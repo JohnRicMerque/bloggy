@@ -1,8 +1,12 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes/Routes';
 
 const App = () => {
     return (
-        <h1>Hello, React!</h1>
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>
     );
 };
 
