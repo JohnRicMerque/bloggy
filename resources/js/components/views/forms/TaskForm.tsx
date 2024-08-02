@@ -1,9 +1,11 @@
 import * as React from 'react'
 import apiService from '../../services/apiService'
+import { useTaskContext } from '../../../context/TaskContext'
 
 const TaskForms = () => {
   const [title, setTitle] = React.useState('')
   const [description, setDescription] = React.useState('')
+  const {updateContextData} = useTaskContext()
 
   // React.useEffect(() => {
   //   console.log("@@@", title, description)
@@ -16,6 +18,7 @@ const TaskForms = () => {
     }).then ((res) => {
       setTitle("")
       setDescription("")
+      updateContextData()
     })
   }
 

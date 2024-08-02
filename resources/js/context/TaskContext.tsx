@@ -12,6 +12,7 @@ interface TaskData {
 
 interface TaskContextType {
     taskList: TaskData[];
+    updateContext: () => void;
 }
 
 const TaskContext = React.createContext <TaskContextType | undefined>(undefined);
@@ -23,6 +24,8 @@ export const TaskProvider: React.FC = ({ children }) => {
         apiService.get('get-task-list').then((res) => {
             console.log(res)
             setTaskList(res.data.data)
+        }).catch((err) => {
+            console.log(err)
         })
     }
 
@@ -30,7 +33,11 @@ export const TaskProvider: React.FC = ({ children }) => {
         fetchTaskList()
     }, [])
 
-    return <TaskContext.Provider value={{ taskList}}>
+    const updateContextData = () => {
+        fetchTaskList()
+    }
+
+    return <TaskContext.Provider value={{ taskList, updateContextData}}>
         {children}
     </TaskContext.Provider>
 }

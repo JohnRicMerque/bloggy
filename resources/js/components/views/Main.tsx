@@ -1,6 +1,6 @@
 import React from "react";
 import TaskForm from "./forms/TaskForm";
-// import TaskList from "./tasks/TaskList";
+import TaskList from "./tasks/TaskList";
 
 const Main = () => {
   return (
@@ -18,7 +18,7 @@ const Main = () => {
           <TaskForm />
         </div>
         <div className="w-6/12">
-          {/* <TaskList /> */}
+          <TaskList />
         </div>
       </div>
     </div>
