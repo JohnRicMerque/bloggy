@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/save-task',[TaskApiController::class, 'saveTask']);
+Route::get('/get-task-list',[TaskApiController::class, 'getTaskAll']);

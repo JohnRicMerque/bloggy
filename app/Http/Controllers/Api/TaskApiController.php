@@ -35,4 +35,10 @@ class TaskApiController extends Controller
             "message" => "Task created successfully",
         ], 200);
     }
+
+    public function getTaskAll(){
+        return response()->json([
+            'data'=>$this->todoModel->getTaskList()
+        ], 200);
+    }
 }
