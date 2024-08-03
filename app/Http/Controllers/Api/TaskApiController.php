@@ -41,4 +41,18 @@ class TaskApiController extends Controller
             'data'=>$this->todoModel->getTaskList()
         ], 200);
     }
+
+    public function markAsDone($taskId){
+        $isUpdated = $this->todoModel->markAsDone($taskId);
+
+        if ($isUpdated) {
+            return response()->json([
+                "message" => "Task updated successfully",
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Failed to update task',
+        ], 422);
+    }
 }
