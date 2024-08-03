@@ -19,9 +19,8 @@ const TaskList = () => {
                     <div>
                     <ul className="menu menu-horizontal bg-base-200 rounded-box">
                         <li>
-                        <div className="tooltip" data-tip="Mark as done">
+                        <div className="tooltip" data-tip="Mark as done" onClick={() => markAsDone(id)}>
                             <svg
-                                onClick={() => markAsDone(id)} 
                                 width={15} 
                                 height={15} fill="none"
                                 className = "stroke-current" 
@@ -35,9 +34,8 @@ const TaskList = () => {
                         </div>
                         </li>
                         <li>
-                        <div className="tooltip" data-tip="Delete">
+                        <div className="tooltip" data-tip="Delete"  onClick={() => deleteTask(id)}>
                             <svg
-                                onClick={() => deleteTask(id)} 
                                 width={15} 
                                 height={15} 
                                 className = "stroke-current" 
