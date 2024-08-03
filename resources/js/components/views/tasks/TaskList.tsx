@@ -34,6 +34,22 @@ const TaskList = () => {
                             </svg>
                         </div>
                         </li>
+                        <li>
+                        <div className="tooltip" data-tip="Delete">
+                            <svg
+                                onClick={() => deleteTask(id)} 
+                                width={15} 
+                                height={15} 
+                                className = "stroke-current" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={2} viewBox="0 0 24 24" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 6h18" />
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 </div>
@@ -44,6 +60,13 @@ const TaskList = () => {
 
     const markAsDone = (id) => {
         apiService.put('mark-as-done/' + id).then(() => {
+            updateContextData()
+    }).catch((err) => {
+        console.log(err)
+    })}
+
+    const deleteTask = (id) => {
+        apiService.put('delete-task/' + id).then(() => {
             updateContextData()
     }).catch((err) => {
         console.log(err)

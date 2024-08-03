@@ -30,4 +30,15 @@ class Task extends Model
         }
         return false;
     }
+
+    public function deleteTask($id){
+        $task = $this->find($id);
+
+        if ($task) {
+            $task->delete();
+            return true;
+        }
+
+        return false;
+    }
 }

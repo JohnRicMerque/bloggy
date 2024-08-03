@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskApiController extends Controller
 {
-    protected $todoModel;
+    protected $taskModel;
 
     function __construct(){
-        $this->todoModel = new Task();
+        $this->taskModel = new Task();
     }
     public function saveTask(Request $request)
     {
@@ -27,7 +27,7 @@ class TaskApiController extends Controller
             ], 422);
         }
 
-        $this->todoModel->createTask([
+        $this->taskModel->createTask([
             "title" => $request->title, 
             "description" => $request->description]);
 
@@ -38,12 +38,12 @@ class TaskApiController extends Controller
 
     public function getTaskAll(){
         return response()->json([
-            'data'=>$this->todoModel->getTaskList()
+            'data'=>$this->taskModel->getTaskList()
         ], 200);
     }
 
     public function markAsDone($taskId){
-        $isUpdated = $this->todoModel->markAsDone($taskId);
+        $isUpdated = $this->taskModel->markAsDone($taskId);
 
         if ($isUpdated) {
             return response()->json([
@@ -53,6 +53,20 @@ class TaskApiController extends Controller
 
         return response()->json([
             'error' => 'Failed to update task',
+        ], 422);
+    }
+
+    public function deleteTask($taskId){
+        $isDeleted = $this->taskModel->deleteTask($taskId);
+
+        if ($isDeleted) {
+            return response()->json([
+                "message" => "Task deleted successfully"
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Failed to delete task'
         ], 422);
     }
 }
